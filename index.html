@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>JASA SEWA PS SAB</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Outfit', sans-serif;
+            background: url('https://files.catbox.moe/k5hwsr.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fffbea;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        #loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: #f1c40f;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        #loading h2 {
+            color: black;
+            font-size: 24px;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.4;
+            }
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            margin: 20px 0;
+            color: #f1c40f;
+            text-shadow: 1px 1px 2px #000;
+        }
+
+        .logo {
+            display: block;
+            margin: 0 auto 10px auto;
+            width: 90px;
+            height: 90px;
+            object-fit: cover;
+            border-radius: 14px;
+            border: 4px solid white;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+        }
+
+        .section {
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .section h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #f1c40f;
+        }
+
+        .grid2col {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px 30px;
+            font-size: 14px;
+        }
+
+        .form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .form select,
+        .form input {
+            padding: 10px;
+            border-radius: 6px;
+            border: none;
+            outline: none;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 14px;
+        }
+
+        .form input::placeholder {
+            color: #eee;
+        }
+
+        .form button {
+            background-color: #f1c40f;
+            padding: 12px;
+            color: black;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .form button:hover {
+            background-color: #f4d03f;
+        }
+
+        .channel-btn {
+            background-color: #27ae60;
+            text-align: center;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 15px;
+            color: white;
+            text-decoration: none;
+            display: block;
+        }
+
+        .emoji-fall {
+            position: fixed;
+            top: -10px;
+            pointer-events: none;
+            animation: fall linear infinite;
+            z-index: 1000;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="loading">
+        <h2>Memuat Halaman...</h2>
+    </div>
+
+    <img src="https://files.catbox.moe/k5hwsr.jpg" alt="Logo FOURXSTORE" class="logo">
+    <h1>SEWA PS SAB</h1>
+
+    <div class="section">
+        <h2>PAKET HARIAN</h2>
+        <div style="display: flex; flex-direction: column; gap: 6px; font-size: 15px;">
+            <div>1 Hari: 15K</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>PAKET JAM [ Durasi Promosi ]</h2>
+        <div class="grid2col">
+            <div>1 Jam: 2,5K</div>
+            <div>2 Jam: 5K</div>
+            <div>3 Jam: 7,5K</div>
+            <div>4 Jam: 10K</div>
+            <div>5 Jam: 12k free 1 jam</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>PET TUMBAL GAG</h2>
+        <div class="grid2col">
+            <div>Age 50 = 1k</div>
+            <div>Age 60 = 2k</div>
+            <div>Age 75 = 3k</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Form Pembelian Otomatis</h2>
+        <form class="form" id="jpmForm">
+            <select id="jenisPaket" required>
+                <option value="">-- Pilih Jenis Pembelian
+                --</option>
+                <option value="Harian">Paket Harian</option>
+                <option value="Jam">Paket Jam</option>
+                <option value="Target">Pet tumbal gag</option>
+            </select>
+
+            <select id="paket" required>
+                <option value="">-- Pilih Paket Terlebih Dahulu --</option>
+            </select>
+
+            <input type="text" id="nominal" placeholder="Nominal akan muncul otomatis" readonly>
+            <input type="text" id="waktu" placeholder="Waktu transaksi akan muncul otomatis" readonly>
+            <input type="text" id="nama" placeholder="Masukkan nama Anda" required>
+
+            <button type="submit">Beli Sekarang</button>
+        </form>
+
+        <a href="https://chat.whatsapp.com/CbFV0ocvEeuFRHtZfQSNzC?mode=ems_copy_t" target="_blank" class="channel-btn">
+            🔥 Gabung Grup Utama
+        </a>
+        <a href="https://whatsapp.com/channel/0029Vax22F0EVccGD9t6uT0f" target="_blank" class="channel-btn" style="background:#f39c12">
+            🤩 Lihat Channel Testimoni
+        </a>
+    </div>
+
+    <!-- Need Help Section -->
+    <!-- Need Help Box (Latar Hitam Transparan) -->
+    <div class="section" style="background-color: rgba(0, 0, 0, 0.7); color: #f1c40f; text-align: left; border: 1px solid rgba(255,255,255,0.1); margin-top: 30px;">
+        <h2 style="font-size: 20px;">🎧 Need Help?</h2>
+        <p style="margin-top: -10px; font-weight: 600; color: #fff;">Contact Us</p>
+        <p style="font-size: 14px; color: #ddd;">Hubungi kami via WhatsApp untuk pertanyaan atau bantuan pemesanan:</p>
+        <a href="https://wa.me/+628895866364" target="_blank" style="background-color: #25D366; color: white; padding: 10px 16px; border-radius: 6px; text-decoration: none; display: inline-block; font-weight: bold;">
+            💬 Chat via WhatsApp
+        </a>
+        <div style="margin-top: 16px; font-size: 14px; color: #fff;">
+            <p style="margin: 4px 0;"><strong>� DAPA STORE Official</strong></p>
+            <p style="margin: 4px 0;">📍  Indonesia</p>
+            <p style="margin: 4px 0;">⏰ Buka setiap hari 07:00 - 23:00 WIB</p>
+        </div>
+    </div>
+
+    <!-- Footer (Paling Bawah & Terpisah) -->
+    <footer style="background-color: #2c3e50; color: white; padding: 20px 0; text-align: center; margin-top: 50px; border-radius: 12px;">
+        <p style="margin: 0; font-size: 14px;"><strong>⚡ DAPA STORE</strong></p>
+        <p style="margin: 4px 0; font-size: 13px;">© 2025 DAPA STORE. All rights reserved.</p>
+    </footer>
+
+    <script>
+        window.onload = function() {
+            const delay = Math.floor(Math.random() * 1000) + 2000;
+            setTimeout(() => document.getElementById('loading').style.display = 'none', delay);
+        };
+
+        const paketData = {
+            Harian: [{
+                    text: '1 Hari',
+                    price: '15000'
+                },
+            ],
+            Jam: [{
+                    text: '1 Jam',
+                    price: '2500'
+                },
+                {
+                    text: '2 Jam',
+                    price: '5000'
+                },
+                {
+                    text: '3 Jam',
+                    price: '7500'
+                },
+                {
+                    text: '4 Jam',
+                    price: '10000'
+                },
+                {
+                    text: '5 Jam',
+                    price: '12000'
+                },
+            ],
+            Target: [{
+                    text: 'Age 50',
+                    price: '1000'
+                },
+                {
+                    text: 'Age 60',
+                    price: '2000'
+                },
+                {
+                    text: 'Age 75',
+                    price: '3000'
+                },
+            ]
+        };
+
+        document.getElementById('jenisPaket').addEventListener('change', function() {
+            const jenis = this.value;
+            const paketSelect = document.getElementById('paket');
+            paketSelect.innerHTML = '<option value="">-- Pilih Paket Terlebih Dahulu --</option>';
+            if (paketData[jenis]) {
+                paketData[jenis].forEach(p => {
+                    const opt = document.createElement('option');
+                    opt.value = p.price;
+                    opt.textContent = `${p.text} - Rp ${parseInt(p.price).toLocaleString()}`;
+                    paketSelect.appendChild(opt);
+                });
+            }
+        });
+
+        document.getElementById('paket').addEventListener('change', function() {
+            document.getElementById('nominal').value = `Rp ${parseInt(this.value).toLocaleString()}`;
+            document.getElementById('waktu').value = new Date().toLocaleString('id-ID');
+        });
+
+        document.getElementById('jpmForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const jenis = document.getElementById('jenisPaket').value;
+            const paket = document.getElementById('paket').selectedOptions[0].text;
+            const nominal = document.getElementById('nominal').value;
+            const waktu = document.getElementById('waktu').value;
+            const nama = document.getElementById('nama').value;
+
+            const message = encodeURIComponent(`*ORDER SEWA PS SAB DAN PET TUMBAL GAG*\n\n• Nama: ${nama}\n• Paket: ${paket}\n• Jenis: ${jenis}\n• Nominal: ${nominal}\n• Waktu: ${waktu}`);
+            window.open(`https://wa.me/+628895866364?text=${message}`, '_blank');
+        });
+
+        const emojiList = ['🔥', '🤩'];
+        for (let i = 0; i < 40; i++) {
+            const emoji = document.createElement('div');
+            emoji.classList.add('emoji-fall');
+            emoji.style.left = Math.random() * 100 + 'vw';
+            emoji.style.animationDuration = (Math.random() * 5 + 5) + 's';
+            emoji.style.fontSize = (Math.random() * 10 + 10) + 'px';
+            emoji.style.top = '-' + Math.random() * 20 + 'px';
+            emoji.textContent = emojiList[Math.floor(Math.random() * emojiList.length)];
+            document.body.appendChild(emoji);
+        }
+    </script>
+
+</body>
+
+</html>
